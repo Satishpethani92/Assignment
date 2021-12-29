@@ -32,11 +32,18 @@ class _AddProductState extends State<AddProduct> {
   AddProductViewModel? model;
 
   @override
+  void initState() {
+    super.initState();
+    checkRoute();
+  }
+
+  @override
   void dispose() {
     model!.nameController.clear();
     model!.launchSiteController.clear();
 
     model!.rating = 0;
+    model!.resetData();
     super.dispose();
   } // final ProductAddArgument? productAddArgument;
 
@@ -208,4 +215,14 @@ class _AddProductState extends State<AddProduct> {
       },
     );
   }
+
+  Future<void> checkRoute() async {
+    await Future.delayed(Duration(milliseconds: 20));
+    if (widget.productAddArgument!.previousScreen == null ||
+        widget.productAddArgument!.previousScreen! != "home") {
+      Navigator.pop(context);
+    }
+  }
+
+
 }
