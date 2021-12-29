@@ -350,7 +350,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Icon(Icons.edit),
           ),
         ),
-        Spacer(),
+        SizedBox(  width: 30),
         GestureDetector(
           onTap: () {
             _showDeleteAlert(index: index);
